@@ -7,7 +7,7 @@
 
 <p>
   <strong>Store:</strong>
-  <%= @image.store %>
+  <%= image_tag @image.store_url if @image.store? %>
 </p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
