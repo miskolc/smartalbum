@@ -1,2 +1,6 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="row text-center">
+  <h1 class="smartalbum-title">Welcome to SmartAlbum</h1>
+  <div class="row">
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg btn-primary" %> <span class="between"> or </span> <%= link_to "Sign up", new_user_session_path, class: "btn btn-primary btn-lg btn-warning" %>
+  </div>
+</div>
