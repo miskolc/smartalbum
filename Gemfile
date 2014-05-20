@@ -28,7 +28,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Authentication
-gem 'devise'
+gem 'devise', '~> 3.2.4'
+
+# Image Upload
+gem 'carrierwave', '~> 0.10.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
