@@ -34,6 +34,9 @@ gem 'devise', '~> 3.2.4'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.7.0'
 
+# Pagination
+gem 'will_paginate', '~> 3.0.5'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

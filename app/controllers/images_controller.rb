@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = @user.images
+    @images = @user.images.paginate page: params[:page]
   end
 
   # GET /images/1
