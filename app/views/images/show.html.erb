@@ -7,7 +7,12 @@
 
 <p>
   <strong>Store:</strong>
-  <%= image_tag @image.store_url if @image.store? %>
+  
+  <% if @image.store? %>
+    <%= image_tag @image.store_url if @image.store? %>
+  <% else %>
+    <img src="holder.js/400x200">
+  <% end %>  
 </p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
