@@ -3,7 +3,9 @@
 <%= link_to 'Add New Image', new_user_image_path(current_user), class: "btn btn-primary btn-lg" %>
 <br/>
 <div class="text-center">
-  <%= will_paginate @images %>
+  <div class="will_bootstrap">
+    <%= will_paginate @images %>
+  </div>
 </div>
 <table class="table table-striped table-hover ">
   <thead>
@@ -32,8 +34,10 @@
     <% end %>
   </tbody>
 </table>
-
-<%= will_paginate @images %>
-
+<div class="text-center">
+  <div class="will_bootstrap">
+    <%= will_paginate @images %>
+  </div>
+</div>
 <br>
 
