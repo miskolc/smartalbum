@@ -14,7 +14,11 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><img src="holder.js/300x200"></td>
+        <% if image.store? %>
+          <td> <%= image_tag image.store_url(:thumb) %> </td>
+        <% else %>  
+          <td><img src="holder.js/300x200"></td>
+        <% end %>
         <td><%= image.store %></td>
         <td><%= link_to 'Show', [current_user, image] %></td>
         <td><%= link_to 'Edit', edit_user_image_path(current_user,image) %></td>
