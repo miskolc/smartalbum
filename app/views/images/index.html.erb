@@ -1,9 +1,8 @@
 <h1>Listing images</h1>
 
-<table>
+<table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>User</th>
       <th>Store</th>
       <th></th>
       <th></th>
@@ -14,7 +13,6 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.user_id %></td>
         <td><%= image.store %></td>
         <td><%= link_to 'Show', [current_user, image] %></td>
         <td><%= link_to 'Edit', edit_user_image_path(current_user,image) %></td>
