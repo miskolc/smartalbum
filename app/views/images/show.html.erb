@@ -9,7 +9,7 @@
   <strong>Store:</strong>
   
   <% if @image.store? %>
-    <%= image_tag @image.store_url if @image.store? %>
+    <%= image_tag @image.store_url(:normal) if @image.store? %>
   <% else %>
     <img src="holder.js/400x200">
   <% end %>  
