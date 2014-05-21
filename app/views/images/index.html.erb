@@ -15,7 +15,7 @@
     <% @images.each do |image| %>
       <tr>
         <% if image.store? %>
-          <td> <%= image_tag image.store_url(:thumb) %> </td>
+          <td class="text-center"> <%= image_tag image.store_url(:thumb) %> </td>
         <% else %>  
           <td><img src="holder.js/300x200"></td>
         <% end %>
