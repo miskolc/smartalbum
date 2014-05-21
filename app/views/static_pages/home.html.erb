@@ -6,12 +6,12 @@
     </div>
   </div>
 <% else %>
-  <div class="row text-center">
-    <h1 class="smartalbum-title"></h1>
-    <span class="glyphicon glyphicon-camera glyphicon-large"></span> <br/>  
-    <h3>There are no photos yet</h3>
-    <p>Start by uploading your first photo and let SmartAlbum store it for you.</p> 
-    <%= link_to 'Add your first photo', new_user_image_path(current_user), class: "btn btn-default btn-lg", id: "add-photo-button" %> 
+    <div class="row text-center">
+      <h1 class="smartalbum-title"></h1>
+      <span class="glyphicon glyphicon-camera glyphicon-large"></span> <br/>  
+      <h3>There are no photos yet</h3>
+      <p>Start by uploading your first photo and let SmartAlbum store it for you.</p> 
+      <%= link_to 'Add your first photo', new_user_image_path(current_user), class: "btn btn-default btn-lg", id: "add-photo-button" %> 
 
-  </div>
+    </div>
 <% end %>

@@ -33,7 +33,7 @@ class StoreUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :normal do
-    process :resize_to_fit => [400, 200]
+    process :resize_to_fit => [1500, 500]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

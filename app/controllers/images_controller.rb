@@ -1,10 +1,11 @@
 class ImagesController < ApplicationController
+  before_action :set_user
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = @user.images
   end
 
   # GET /images/1
@@ -14,7 +15,7 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = Image.new
+    @image = @user.images.build
   end
 
   # GET /images/1/edit
@@ -24,7 +25,8 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+    @user = current_user
+    @image = @user.images.build(image_params)
 
     respond_to do |format|
       if @image.save
@@ -40,6 +42,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
+
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to [current_user, @image], notice: 'Image was successfully updated.' }
@@ -62,9 +65,21 @@ class ImagesController < ApplicationController
   end
 
   private
+
+    def set_user
+      @user = User.find(params[:user_id])
+      if current_user.id != @user.id 
+        redirect_to root_url
+        # TODO verifica daca redirecteaza si mai adauga un notice flash prin care sa-l anunti ca a
+        # folosit linkul altui user
+      else 
+        @user = current_user
+      end    
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_image
-      @image = Image.find(params[:id])
+      @image = @user.images.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
