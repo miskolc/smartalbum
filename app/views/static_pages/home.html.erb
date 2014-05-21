@@ -1,6 +1,17 @@
-<div class="row text-center">
-  <h1 class="smartalbum-title">Welcome to SmartAlbum</h1>
-  <div class="row">
-  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg btn-primary" %> <span class="between"> or </span> <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary btn-lg btn-warning" %>
+<% unless current_user %>
+  <div class="row text-center">
+    <h1 class="smartalbum-title">Welcome to SmartAlbum</h1>
+    <div class="row">
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg btn-primary" %> <span class="between"> or </span> <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary btn-lg btn-warning" %>
+    </div>
   </div>
-</div>
+<% else %>
+    <div class="row text-center">
+      <h1 class="smartalbum-title"></h1>
+      <span class="glyphicon glyphicon-camera glyphicon-large"></span> <br/>  
+      <h3>There are no photos yet</h3>
+      <p>Start by uploading your first photo and let SmartAlbum store it for you.</p> 
+      <%= link_to 'Add your first photo', new_user_image_path(current_user), class: "btn btn-default btn-lg", id: "add-photo-button" %> 
+
+    </div>
+<% end %>

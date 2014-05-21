@@ -1,0 +1,17 @@
+
+<div class="container ">
+  <div class="row text-center">
+    <% if @image.store? %>
+      <%= image_tag @image.store_url(:normal) if @image.store? %>
+    <% else %>
+      <img src="holder.js/1000x500">
+    <% end %>  
+  </div>
+  <!--
+  <div class="row">
+    <%= link_to 'Edit', edit_user_image_path(current_user, @image) %> |
+    <%= link_to 'Back', user_images_path(current_user) %>
+  </div>
+  -->
+</div>
+  

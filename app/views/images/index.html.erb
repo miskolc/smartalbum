@@ -1,0 +1,29 @@
+<h1>Listing images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Store</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.user_id %></td>
+        <td><%= image.store %></td>
+        <td><%= link_to 'Show', [current_user, image] %></td>
+        <td><%= link_to 'Edit', edit_user_image_path(current_user,image) %></td>
+        <td><%= link_to 'Destroy', [current_user, image], method: :delete , data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_user_image_path(current_user) %>
