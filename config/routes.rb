@@ -1,8 +1,11 @@
 Smartalbum::Application.routes.draw do
-  resources :images
 
   devise_for :users
-  
+
+  resources :users, only: [ :show ] do
+    resources :images
+  end
+    
   root "static_pages#home"
   get "static_pages/about"
   # The priority is based upon order of creation: first created -> highest priority.

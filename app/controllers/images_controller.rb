@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to [current_user, @image], notice: 'Image was successfully created.' }
         format.json { render action: 'show', status: :created, location: @image }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to [current_user, @image], notice: 'Image was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class ImagesController < ApplicationController
   def destroy
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to user_images_url }
       format.json { head :no_content }
     end
   end
