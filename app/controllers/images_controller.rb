@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :redirect_if_not_signed_in
   before_action :set_user
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
@@ -65,6 +66,10 @@ class ImagesController < ApplicationController
   end
 
   private
+
+    def redirect_if_not_signed_in
+      redirect_to root_url unless current_user
+    end  
 
     def set_user
       @user = User.find(params[:user_id])
