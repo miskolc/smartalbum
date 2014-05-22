@@ -14,8 +14,10 @@ This README would normally document whatever steps are necessary to get your app
 ( Ubuntu 13.10 recommended )
 * Configuration
 * Dependencies
-    * ImageMagick
-    * OpenCV
+    * Ruby 2.0.0p353
+    * Rails 4.0.5
+    * ImageMagick 6.7.7-10
+    * OpenCV ( recommended 2.4.9)
     * Redis ( recommended 2.8.6)
 * Database configuration
 * How to run tests
