@@ -16,7 +16,7 @@ This README would normally document whatever steps are necessary to get your app
 * Dependencies
     * ImageMagick
     * OpenCV
-    * Redis
+    * Redis ( recommended 2.8.6)
 * Database configuration
 * How to run tests
 * Deployment instructions
