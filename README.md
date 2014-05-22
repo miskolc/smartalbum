@@ -14,9 +14,9 @@ This README would normally document whatever steps are necessary to get your app
 ( Ubuntu 13.10 recommended )
 * Configuration
 * Dependencies
-ImageMagick
-OpenCV
-Redis
+    * ImageMagick
+    * OpenCV
+    * Redis
 * Database configuration
 * How to run tests
 * Deployment instructions
