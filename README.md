@@ -20,6 +20,8 @@ This README would normally document whatever steps are necessary to get your app
     * OpenCV ( recommended 2.4.9)
     * Redis ( recommended 2.8.6)
 * Database configuration
+    * rake db:migrate
+    * rake db:seed 
 * How to run tests
 * Deployment instructions
 
