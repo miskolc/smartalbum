@@ -66,6 +66,12 @@ class ImagesController < ApplicationController
     end
   end
 
+  # GET /images/1/data
+  def data
+    @image = @user.images.find(params[:image_id])
+    @exif_fields = @image.exif_fields
+  end
+
   private
 
     def redirect_if_not_signed_in

@@ -3,7 +3,9 @@ Smartalbum::Application.routes.draw do
   devise_for :users
 
   resources :users, only: [ :show ] do
-    resources :images
+    resources :images do
+      get 'data'
+    end
   end
     
   root "static_pages#home"
