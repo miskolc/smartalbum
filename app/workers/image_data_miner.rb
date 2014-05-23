@@ -29,6 +29,16 @@ class ImageDataMiner
     %w[jpg jpeg jpe jif jfif jfi tiff tif].include?(get_extension(url))
   end
 
+  def get_human_faces
+    human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
+    human_faces.each do |human_face|
+      @image.faces.create!(x_coordinate: human_face[:x],
+                           y_coordinate: human_face[:y],
+                           width:        human_face[:width],
+                           height:       20 )
+    end 
+  end
+
   def get_image_location
     if @exif.gps
       if @exif.gps.latitude
@@ -54,13 +64,8 @@ class ImageDataMiner
     @image = Image.find(image_id)
     url = 'public' + @image.store_url
 
-    human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
-    human_faces.each do |human_face|
-      @image.faces.create!(x_coordinate: human_face[:x],
-                           y_coordinate: human_face[:y],
-                           width:        human_face[:width],
-                           height:       20 )
-    end    
+    get_human_faces
+
     if is_jpeg_or_tiff? url 
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
