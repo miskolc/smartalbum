@@ -1,11 +1,12 @@
 class ImagesController < ApplicationController
+  before_action :redirect_if_not_signed_in
   before_action :set_user
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   # GET /images
   # GET /images.json
   def index
-    @images = @user.images
+    @images = @user.images.paginate page: params[:page]
   end
 
   # GET /images/1
@@ -30,6 +31,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
+        ImageDataMiner.perform_async('public' + @image.store_url, 5)
         format.html { redirect_to [current_user, @image], notice: 'Image was successfully created.' }
         format.json { render action: 'show', status: :created, location: @image }
       else
@@ -65,6 +67,10 @@ class ImagesController < ApplicationController
   end
 
   private
+
+    def redirect_if_not_signed_in
+      redirect_to root_url unless current_user
+    end  
 
     def set_user
       @user = User.find(params[:user_id])

@@ -1,20 +1,21 @@
 <h1>Listing images</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Store</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
+<%= link_to 'Add New Image', new_user_image_path(current_user), class: "btn btn-primary btn-lg" %>
+<br/>
+<div class="text-center">
+  <div class="will_bootstrap">
+    <%= will_paginate @images %>
+  </div>
+</div>
+<table class="table table-striped table-hover ">
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.user_id %></td>
+        <% if image.store? %>
+          <td class="text-center"> <%= image_tag image.store_url(:thumb) %> </td>
+        <% else %>  
+          <td><img src="holder.js/300x200"></td>
+        <% end %>
         <td><%= image.store %></td>
         <td><%= link_to 'Show', [current_user, image] %></td>
         <td><%= link_to 'Edit', edit_user_image_path(current_user,image) %></td>
@@ -23,7 +24,10 @@
     <% end %>
   </tbody>
 </table>
-
+<div class="text-center">
+  <div class="will_bootstrap">
+    <%= will_paginate @images %>
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Image', new_user_image_path(current_user) %>

@@ -1,3 +1,98 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.will_bootstrap > .pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.will_bootstrap > .pagination > a, .will_bootstrap > .pagination > em, .will_bootstrap > .pagination > span {
+  display: inline;
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #555555;
+  background-color: #eeeeee;
+  border: 1px solid #e2e2e2;
+  margin-left: -1px;
+  top: 0;
+  border-width: 0 1px 4px 1px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.will_bootstrap > .pagination > a:first-child,
+.will_bootstrap > .pagination > span:first-child {
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.will_bootstrap > .pagination > a:last-child,
+.will_bootstrap > .pagination > span:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.will_bootstrap > .pagination > a:hover,
+.will_bootstrap > .pagination > span:hover,
+.will_bootstrap > .pagination > a:focus,
+.will_bootstrap > .pagination > span:focus {
+  color: #555555;
+  background-color: #eeeeee;
+  border-color: #e2e2e2;
+}
+.will_bootstrap > .pagination >  em,
+.will_bootstrap > .pagination >  em,
+.will_bootstrap > .pagination >  em:hover,
+.will_bootstrap > .pagination >  em:hover,
+.will_bootstrap > .pagination >  em:focus,
+.will_bootstrap > .pagination >  em:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #158cba;
+  border-color: #127ba3;
+  cursor: default;
+}
+.will_bootstrap > .pagination > .disabled > em,
+.will_bootstrap > .pagination > .disabled > em:hover,
+.will_bootstrap > .pagination > .disabled > em:focus,
+.will_bootstrap > .pagination > .disabled > em,
+.will_bootstrap > .pagination > .disabled > em:hover,
+.will_bootstrap > .pagination > .disabled > em:focus {
+  color: #999999;
+  background-color: #eeeeee;
+  border-color: #e2e2e2;
+  cursor: not-allowed;
+}
+.will_bootstrap > .pagination-lg > em,
+.will_bootstrap > .pagination-lg > a {
+  padding: 10px 16px;
+  font-size: 18px;
+}
+.will_bootstrap > .pagination-lg > li:first-child > a,
+.will_bootstrap > .pagination-lg > li:first-child > span {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.will_bootstrap > .pagination-lg > li:last-child > a,
+.will_bootstrap > .pagination-lg > li:last-child > span {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.will_bootstrap > .pagination-sm > li > a,
+.will_bootstrap > .pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.will_bootstrap > .pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.will_bootstrap > .pagination-sm > li:last-child > a,
+.will_bootstrap > .pagination-sm > li:last-child > span {
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
