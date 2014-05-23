@@ -1,4 +1,21 @@
 require 'exifr'
+require 'ffi'
+
+module Faces
+  extend FFI::Library
+  ffi_lib File.join(File.expand_path(File.join(File.dirname(__FILE__))), 'libfaces.so')
+  attach_function :detect_faces, [:string, :string], :string
+ 
+  def self.faces_in(image)
+    keys = [:x,:y,:width,:height]
+
+    detected_faces = detect_faces(image, nil)
+    detected_faces.split("n").map do |e|
+      vals = e.split(';').map(&:to_i)
+      Hash[ keys.zip(vals) ]
+    end
+  end
+end
 
 class ImageDataMiner
   include Sidekiq::Worker
@@ -36,7 +53,9 @@ class ImageDataMiner
     sleep 5
     @image = Image.find(image_id)
     url = 'public' + @image.store_url
-  
+    logger.info('NU MERGE /home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
+    logger.info(Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url))
+    logger.info('DA MERGE')
     if is_jpeg_or_tiff? url 
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
