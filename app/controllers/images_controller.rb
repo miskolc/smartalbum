@@ -31,7 +31,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        ImageDataMiner.perform_async('public' + @image.store_url, 5)
+        ImageDataMiner.perform_async(@image.id)
         format.html { redirect_to [current_user, @image], notice: 'Image was successfully created.' }
         format.json { render action: 'show', status: :created, location: @image }
       else
@@ -64,6 +64,12 @@ class ImagesController < ApplicationController
       format.html { redirect_to user_images_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /images/1/data
+  def data
+    @image = @user.images.find(params[:image_id])
+    @exif_fields = @image.exif_fields
   end
 
   private
