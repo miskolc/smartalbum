@@ -35,7 +35,7 @@ class ImageDataMiner
       @image.faces.create!(x_coordinate: human_face[:x],
                            y_coordinate: human_face[:y],
                            width:        human_face[:width],
-                           height:       20 )
+                           height:       human_face[:height] )
     end 
   end
 
