@@ -24,24 +24,24 @@ class ImageDataMiner
     end
   end
 
+  def get_exif_data
+    exif_data = @exif.to_hash
+    exif_data.each do |key, value|
+      @image.exif_fields.create key: key.to_s, value: value.to_s
+      logger.info( key.to_s + " " + value.to_s )
+    end
+  end
+
   def perform(image_id)
     sleep 5
     @image = Image.find(image_id)
     url = 'public' + @image.store_url
-    # exposure_time = EXIFR::JPEG.new(url).exposure_time.to_s
-    # width = EXIFR::JPEG.new(url).width.to_s
+  
     if is_jpeg_or_tiff? url 
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
-        # Search location if any
         get_image_location
-
-        # Get all exif data
-        exif_data = @exif.to_hash
-        exif_data.each do |key, value|
-          @image.exif_fields.create key: key.to_s, value: value.to_s
-          logger.info( key.to_s + " " + value.to_s )
-        end
+        get_exif_data
       else 
         logger.info( "There is no EXIF data for file: " + url)
       end
