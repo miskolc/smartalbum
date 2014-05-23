@@ -43,6 +43,9 @@ gem 'sidekiq', '~> 3.0.2'
 # Image Data
 gem 'exifr', '~> 1.1.3'
 
+# Geolocation
+gem 'geocoder', '~> 1.2.1'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
