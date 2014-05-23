@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523121024) do
+ActiveRecord::Schema.define(version: 20140523192937) do
 
   create_table "exif_fields", force: true do |t|
     t.integer  "image_id"
     t.string   "key"
     t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faces", force: true do |t|
+    t.integer  "image_id"
+    t.integer  "x_coordinate"
+    t.integer  "y_coordinate"
+    t.integer  "height"
+    t.integer  "width"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
