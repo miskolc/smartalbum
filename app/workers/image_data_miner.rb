@@ -53,9 +53,14 @@ class ImageDataMiner
     sleep 5
     @image = Image.find(image_id)
     url = 'public' + @image.store_url
-    logger.info('NU MERGE /home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
-    logger.info(Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url))
-    logger.info('DA MERGE')
+
+    human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
+    human_faces.each do |human_face|
+      @image.faces.create!(x_coordinate: human_face[:x],
+                           y_coordinate: human_face[:y],
+                           width:        human_face[:width],
+                           height:       20 )
+    end    
     if is_jpeg_or_tiff? url 
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
