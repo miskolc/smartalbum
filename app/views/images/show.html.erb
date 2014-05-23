@@ -7,6 +7,10 @@
       <img src="holder.js/1000x500">
     <% end %>  
   </div>
+  <div class="row">
+  <%= link_to "Original Image", @image.store_url, class: "btn btn-success btn-lg" %> 
+  <%= link_to "Image Data", user_image_data_path(@user, @image), class: "btn btn-lg btn-warning pull-right" %>
+  </div>
   <!--
   <div class="row">
     <%= link_to 'Edit', edit_user_image_path(current_user, @image) %> |
