@@ -30,7 +30,7 @@ class ImageDataMiner
   end
 
   def get_human_faces
-    human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url(:normal))
+    human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
     human_faces.each do |human_face|
       @image.faces.create!(x_coordinate: human_face[:x],
                            y_coordinate: human_face[:y],
