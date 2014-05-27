@@ -46,7 +46,7 @@ vector<Rect> selectFaces(vector<Rect> faces) {
  
 char* detect_faces(char* input_file, char* output_file) {
   //fprintf(stderr, "usage: %s  %s \n", input_file, output_file);
-
+  buf[0] = '\0';
   CascadeClassifier cascade;
 
   if(!cascade.load("/home/dragos/Programming/rails/spring-races/smartalbum/app/workers/lbpcascade_frontalface.xml")) exit(-2); //load classifier cascade
