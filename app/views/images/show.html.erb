@@ -1,8 +1,16 @@
 
 <div class="container ">
-  <div class="row text-center">
+  <div class="row text-center" id="main-image">
     <% if @image.store? %>
+      <div class="gallery text-center">
       <%= image_tag @image.store_url(:normal) if @image.store? %>
+      <% unless @faces.empty? %>
+        <% @faces.each do |face| %>
+          <div style="<%= "position: absolute; top: #{@delta_height+face.y_coordinate}px; left: #{@delta_width+face.x_coordinate}px; width: #{face.width}px; height: #{face.height}px; border: 1px solid #0ff; z-index: 1000; " %>">
+          </div>
+        <% end %>
+      <% end %>
+      </div>
     <% else %>
       <img src="holder.js/1000x500">
     <% end %>  
@@ -18,4 +26,4 @@
   </div>
   -->
 </div>
-  
+ 

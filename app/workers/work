@@ -1,0 +1,50 @@
+require 'exifr'
+require 'ffi'
+
+module Faces
+  extend FFI::Library
+  ffi_lib File.join(File.expand_path(File.join(File.dirname(__FILE__))), 'libfaces.so')
+  attach_function :detect_faces, [:string, :string], :string
+ 
+  def self.faces_in(image)
+    keys = [:x,:y,:width,:height]
+    
+    detected_faces = ""
+    detected_faces = detect_faces(image, nil)
+    puts detected_faces 
+    detected_faces.split("n").map do |e|
+      vals = e.split(';').map(&:to_i)
+      Hash[ keys.zip(vals) ]
+    end
+    puts detected_faces
+  end
+end
+
+puts "asdjdsa"
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/140/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/139/1.jpg')
+
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/139/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/138/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/137/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/136/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/135/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/134/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/133/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/132/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/131/1.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/130/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/129/1.png')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/128/0.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/127/481232_553973941301924_237850829_n.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/126/19786_600.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/125/19786_600.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/124/481232_553973941301924_237850829_n.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/123/iran-team.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/122/iran-team.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/120/iran-team.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/119/fam.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/118/ronie.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/117/belgique.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/116/iran-team.jpg')
+human_faces = Faces.faces_in('../../public'+'/uploads/image/store/115/blacknazis.jpg')

@@ -12,6 +12,9 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @faces = @image.faces
+    @delta_height = (500 - (@image.normal_height || 0)) / 2
+    @delta_width  = (1000 - (@image.normal_width || 0)) / 2
   end
 
   # GET /images/new
