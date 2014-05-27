@@ -6,7 +6,7 @@
       <%= image_tag @image.store_url(:normal) if @image.store? %>
       <% unless @faces.empty? %>
         <% @faces.each do |face| %>
-          <div style="<%= "position: absolute; top: #{face.y_coordinate}px; left: #{face.x_coordinate}px; width: #{face.width}px; height: #{face.height}px; border: 1px solid #0ff; z-index: 1000; " %>">
+          <div style="<%= "position: absolute; top: #{@delta_height+face.y_coordinate}px; left: #{@delta_width+face.x_coordinate}px; width: #{face.width}px; height: #{face.height}px; border: 1px solid #0ff; z-index: 1000; " %>">
           </div>
         <% end %>
       <% end %>
