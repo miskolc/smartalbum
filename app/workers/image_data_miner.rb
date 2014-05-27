@@ -48,10 +48,10 @@ class ImageDataMiner
   def get_human_faces
     human_faces = Faces.faces_in('/home/dragos/Programming/rails/spring-races/smartalbum/public'+@image.store_url)
     human_faces.each do |human_face|
-      @image.faces.create!(x_coordinate: human_face[:x],
-                           y_coordinate: human_face[:y],
-                           width:        human_face[:width],
-                           height:       human_face[:height] )
+      @image.faces.create!(x_coordinate: human_face[:x] * @image.normal_width / @image.original_width,
+                           y_coordinate: human_face[:y] * @image.normal_height / @image.original_height,
+                           width:        human_face[:width] * @image.normal_width / @image.original_width,
+                           height:       human_face[:height] * @image.normal_height / @image.original_height)
     end 
   end
 
@@ -79,11 +79,11 @@ class ImageDataMiner
     sleep 5
     @image = Image.find(image_id)
     url = 'public' + @image.store_url
-
+    
+    get_image_dimensions
     get_human_faces
 
     if is_jpeg_or_tiff? url 
-      get_image_dimensions
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
         get_image_location
