@@ -21,12 +21,28 @@ class ImageDataMiner
   include Sidekiq::Worker
   sidekiq_options retry: false
 
+  def full_path file_path
+    File.expand_path(File.join(".","public", file_path))
+  end
+
   def get_extension url
     url.split('.')[-1].downcase
   end  
 
   def is_jpeg_or_tiff? url
     %w[jpg jpeg jpe jif jfif jfi tiff tif].include?(get_extension(url))
+  end
+
+  def get_image_dimensions
+    original = MiniMagick::Image.open(full_path(@image.store_url))
+    @image.original_width  = original['width']
+    @image.original_height = original['height']
+
+    normal   = MiniMagick::Image.open(full_path(@image.store_url(:normal)))
+    @image.normal_width  = normal['width']
+    @image.normal_height = normal['height']
+
+    @image.save
   end
 
   def get_human_faces
@@ -67,6 +83,7 @@ class ImageDataMiner
     get_human_faces
 
     if is_jpeg_or_tiff? url 
+      get_image_dimensions
       @exif = EXIFR::JPEG.new(url)
       if @exif.exif?
         get_image_location

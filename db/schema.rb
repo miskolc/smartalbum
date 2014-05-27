@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140523192937) do
+ActiveRecord::Schema.define(version: 20140527111010) do
 
   create_table "exif_fields", force: true do |t|
     t.integer  "image_id"
@@ -39,6 +39,10 @@ ActiveRecord::Schema.define(version: 20140523192937) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+    t.integer  "original_width"
+    t.integer  "original_height"
+    t.integer  "normal_width"
+    t.integer  "normal_height"
   end
 
   create_table "users", force: true do |t|
