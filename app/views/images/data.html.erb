@@ -1,13 +1,45 @@
-
-<% if @image.address %>
-  <span>Location: </span>
-  <span><%= @image.address %></span><br/>
-  <span>Latitude: </span>
-  <span><%= @image.latitude %></span><br/>
-  <span>Longitude: </span>
-  <span><%= @image.longitude %></span><br/>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@image.latitude}%2C#{@image.longitude}" %><br/>
-<% end %>
-<% @image.exif_fields.each do |field| %>
-  <%= field.key + ": " + field.value %><br/>
-<% end %>
+<div class="row col-md-12">
+  <div class="col-md-12 text-center data-page-heading">
+    <h2>Location data</h2>
+  </div>
+  <% if @image.address %>
+    <div class="col-md-5 col-md-offset-1">
+      <strong>Location: </strong>
+      <span><%= @image.address %></span><br/>
+      <strong>Latitude: </strong>
+      <span><%= @image.latitude %></span><br/>
+      <strong>Longitude: </strong>
+      <span><%= @image.longitude %></span><br/>
+    </div>
+    <div class="col-md-5">
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@image.latitude}%2C#{@image.longitude}" %><br/>
+    </div>
+  <% else %>
+      <h5 class="text-center">No location data available for this photo.</h5>
+  <% end %>
+</div>
+<div class="row col-md-12 text-center">
+  <div class="col-md-12 text-center data-page-heading">
+    <h2>Image data</h2>
+  </div>
+  <div class="row col-md-12">
+  <div class="col-md-10 col-md-offset-1 text-left">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Data field name</th>
+          <th>Data field value</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @image.exif_fields.each do |field| %>
+            <tr class="<%= cycle("","") %>">
+              <td> <%= field.key.humanize %></td>
+              <td> <%= field.value %> </td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
