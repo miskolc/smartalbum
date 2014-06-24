@@ -48,7 +48,6 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
-
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to [current_user, @image], notice: 'Image was successfully updated.' }
@@ -100,6 +99,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:user_id, :store)
+      params.require(:image).permit(:user_id, :store, :category_id)
     end
 end

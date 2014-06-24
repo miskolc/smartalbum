@@ -22,7 +22,7 @@
   <div class="col-md-12">
     <%= form_for([current_user, @image], html: {class: "form-horizontal" }) do |form| %>
       <div class="col-md-9">
-      <%= form.select "category", options_from_collection_for_select(@categories, "id", "name", @image.category_id), {}, class: "form-control"  %>
+      <%= form.select "category_id", options_from_collection_for_select(@categories, "id", "name", @image.category_id), {}, class: "form-control"  %>
       </div>
       <%= form.submit("Update category" , class: "btn btn-primary btn-lg col-md-3") %>
     <% end %>
