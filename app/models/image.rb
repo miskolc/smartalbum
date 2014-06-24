@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
   mount_uploader :store, StoreUploader
   has_many :exif_fields
   has_many :faces
