@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
     @faces = @image.faces
     @delta_height = (500 - (@image.normal_height || 0)) / 2
     @delta_width  = (1000 - (@image.normal_width || 0)) / 2
+    @categories = Category.all
   end
 
   # GET /images/new
@@ -47,7 +48,6 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
-
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to [current_user, @image], notice: 'Image was successfully updated.' }
@@ -99,6 +99,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:user_id, :store)
+      params.require(:image).permit(:user_id, :store, :category_id)
     end
 end
