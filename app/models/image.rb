@@ -6,4 +6,12 @@ class Image < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? }
   self.per_page = 5
+
+  def self.search(name)
+    if name
+      where("store LIKE ?","%#{name}%")
+    else  
+      scoped
+    end
+  end
 end
