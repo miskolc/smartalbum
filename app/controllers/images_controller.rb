@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
     @faces = @image.faces
     @delta_height = (500 - (@image.normal_height || 0)) / 2
     @delta_width  = (1000 - (@image.normal_width || 0)) / 2
+    @categories = Category.all
   end
 
   # GET /images/new

@@ -1,6 +1,6 @@
 
 <div class="container ">
-  <div class="row text-center" id="main-image">
+  <div class="row smart-row text-center" id="main-image">
     <% if @image.store? %>
       <div class="gallery text-center">
       <%= image_tag @image.store_url(:normal) if @image.store? %>
@@ -15,9 +15,17 @@
       <img src="holder.js/1000x500">
     <% end %>  
   </div>
-  <div class="row">
+  <div class="row smart-row">
   <%= link_to "Original Image", @image.store_url, class: "btn btn-success btn-lg" %> 
   <%= link_to "Image Data", user_image_data_path(@user, @image), class: "btn btn-lg btn-warning pull-right" %>
+  </div>
+  <div class="col-md-12">
+    <%= form_for([current_user, @image], html: {class: "form-horizontal" }) do |form| %>
+      <div class="col-md-9">
+      <%= form.select "category", options_from_collection_for_select(@categories, "id", "name", @image.category_id), {}, class: "form-control"  %>
+      </div>
+      <%= form.submit("Update category" , class: "btn btn-primary btn-lg col-md-3") %>
+    <% end %>
   </div>
   <!--
   <div class="row">
