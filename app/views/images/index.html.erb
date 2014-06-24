@@ -16,7 +16,7 @@
         <% else %>  
           <td><img src="holder.js/300x200"></td>
         <% end %>
-        <td><%= image.store %></td>
+        <td><%= image.store.to_s.split("/")[-1] %></td>
         <td><%= link_to 'Show', [current_user, image] %></td>
         <td><%= link_to 'Edit', edit_user_image_path(current_user,image) %></td>
         <td><%= link_to 'Destroy', [current_user, image], method: :delete , data: { confirm: 'Are you sure?' } %></td>
