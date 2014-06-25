@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = @user.images.search(params[:name],params[:category_id]).paginate page: params[:page]
-    @categories = Category.all
+    @categories = @user.categories
   end
 
   # GET /images/1
@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
     @faces = @image.faces
     @delta_height = (500 - (@image.normal_height || 0)) / 2
     @delta_width  = (1000 - (@image.normal_width || 0)) / 2
-    @categories = Category.all
+    @categories = @user.categories
   end
 
   # GET /images/new
