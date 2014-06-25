@@ -4,10 +4,18 @@ class CategoriesController < ApplicationController
 
 
   def index
-    @categories = Category.all
+    @categories = @user.categories
+    @new_category = @user.categories.build
   end  
 
+  def create
+    @user.categories.create(category_params)   
+    redirect_to user_categories_url @user
+  end
+
   def destroy
+    @category = @user.categories.find(params[:id])
+    @category.destroy
     redirect_to user_categories_url @user
   end  
 
@@ -29,7 +37,7 @@ class CategoriesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    # def image_params
-    #   params.require(:image).permit(:user_id, :store, :category_id)
-    # end
+    def category_params
+      params.require(:category).permit(:name)
+    end
 end

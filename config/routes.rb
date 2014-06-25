@@ -6,7 +6,7 @@ Smartalbum::Application.routes.draw do
     resources :images do
       get 'data'
     end
-    resources :categories, only: [ :index, :destroy ]
+    resources :categories, only: [ :index, :create, :destroy ]
   end
     
   root "static_pages#home"
