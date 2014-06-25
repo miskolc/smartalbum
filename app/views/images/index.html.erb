@@ -2,15 +2,18 @@
   <h1>Listing images</h1>
 </div>
 <div class="col-md-12 smart-row">
-  <div class="col-md-6">
+  <div class="col-md-9">
     <%= form_tag(user_images_path, method: "get", html: {class: "form-horizontal" }) do %>
-      <div class="col-md-9">
+      <div class="col-md-6">
       <%= text_field_tag(:name, nil, placeholder: "Image name", class: "form-control") %>
+      </div>
+      <div class="col-md-3">
+        <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", "All Categories"), include_blank: true, class: "form-control" %>
       </div>
       <%= submit_tag("Search" , class: "btn btn-primary btn-lg col-md-3") %>
     <% end %>
   </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <%= link_to 'Add New Image', new_user_image_path(current_user), class: "btn btn-primary btn-lg" %>
   </div>
 </div>  
