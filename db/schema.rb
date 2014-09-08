@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908052706) do
+ActiveRecord::Schema.define(version: 20140908061536) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140908052706) do
     t.integer  "normal_width"
     t.integer  "normal_height"
     t.integer  "category_id"
+    t.integer  "sub_category_id"
   end
 
   create_table "sub_categories", force: true do |t|
