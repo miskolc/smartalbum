@@ -27,6 +27,16 @@
       <%= form.submit("Update category" , class: "btn btn-primary btn-lg col-md-3") %>
     <% end %>
   </div>
+  <% if @category %>
+    <div class="col-md-12">
+    <%= form_for([current_user, @image], html: {class: "form-horizontal" }) do |form| %>
+      <div class="col-md-9">
+      <%= form.select "sub_category_id", options_from_collection_for_select(@sub_categories, "id", "name", @image.sub_category_id), {}, class: "form-control"  %>
+      </div>
+      <%= form.submit("Update sub-category" , class: "btn btn-primary btn-lg col-md-3") %>
+    <% end %>
+  </div>
+  <% end %>
   <!--
   <div class="row">
     <%= link_to 'Edit', edit_user_image_path(current_user, @image) %> |

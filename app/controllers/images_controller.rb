@@ -17,6 +17,11 @@ class ImagesController < ApplicationController
     @delta_height = (500 - (@image.normal_height || 0)) / 2
     @delta_width  = (1000 - (@image.normal_width || 0)) / 2
     @categories = @user.categories
+    @category = @image.category
+    @sub_categories = []
+    if(@category) 
+      @sub_categories = @category.sub_categories
+    end
   end
 
   # GET /images/new
