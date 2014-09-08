@@ -7,10 +7,15 @@
       <div class="col-md-6">
       <%= text_field_tag(:name, nil, placeholder: "Image name", class: "form-control") %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
         <%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", "All Categories"), include_blank: true, class: "form-control" %>
       </div>
-      <%= submit_tag("Search" , class: "btn btn-primary btn-lg col-md-3") %>
+      <% if @category %>
+        <div class="col-md-2">
+        <%= select_tag "sub_category_id", options_from_collection_for_select(@sub_categories, "id", "name", "All SubCategories"), include_blank: true, class: "form-control" %>
+      </div>
+      <% end %>
+      <%= submit_tag("Search" , class: "btn btn-primary btn-lg col-md-2") %>
     <% end %>
   </div>
   <div class="col-md-3 text-right">

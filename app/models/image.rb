@@ -8,13 +8,16 @@ class Image < ActiveRecord::Base
   after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? }
   self.per_page = 5
 
-  def self.search(name, category_id)
+  def self.search(name, category_id, sub_category_id)
     query = "1=1 "
     if name && name != ""
       query += "and store LIKE '%#{name}%' "
     end
     if category_id && category_id != ""
       query += "and category_id = '#{category_id}'"
+    end
+    if sub_category_id && sub_category_id != ""
+      query += "and sub_category_id = '#{sub_category_id}'"
     end
       
     where(query)
