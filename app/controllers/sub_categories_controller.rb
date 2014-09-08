@@ -1,28 +1,17 @@
-class CategoriesController < ApplicationController
+class SubCategoriesController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :set_user
-
-
-  def index
-    @categories = @user.categories
-    @new_category = @user.categories.build
-  end  
-
-  def show
-    @category = @user.categories.find(params[:id])
-    @sub_categories = @category.sub_categories
-    @new_sub_category = @category.sub_categories.build
-  end
+  before_action :set_category
 
   def create
-    @user.categories.create(category_params)   
-    redirect_to user_categories_url @user
+    @category.sub_categories.create(sub_category_params)   
+    redirect_to user_category_url @user, @category
   end
 
   def destroy
-    @category = @user.categories.find(params[:id])
-    @category.destroy
-    redirect_to user_categories_url @user
+    @sub_category = @category.sub_categories.find(params[:id])
+    @sub_category.destroy
+    redirect_to user_category_url @user, @category
   end  
 
   private
@@ -42,8 +31,12 @@ class CategoriesController < ApplicationController
       end    
     end
 
+    def set_category
+      @category = @user.categories.find(params[:category_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
-    def category_params
-      params.require(:category).permit(:name)
+    def sub_category_params
+      params.require(:sub_category).permit(:name)
     end
 end

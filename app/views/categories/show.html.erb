@@ -1,14 +1,14 @@
 <div class="col-md-12 smart-row text-center">
-  <h1>Image Categories</h1>
+  <h1>Image Sub-categories of Category: <%= @category.name %></h1>
 </div>
 <div class="col-md-12 smart-row text-center">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for [@user, @new_category] do |form| %>
+    <%= form_for [@user, @category, @new_sub_category] do |form| %>
       <div class="col-md-3 text-right">
       <%= form.label :name, class: "control-label col-md-12" %>
       </div>
       <div class="col-md-6">
-      <%= form.text_field :name, class: "form-control col-md-12", placeholder: "Add New Category" %>
+      <%= form.text_field :name, class: "form-control col-md-12", placeholder: "Add New Sub-Category" %>
       </div>
       <div class="col-md-3  ">
       <%= form.submit "Add", class: "btn btn-primary col-md-12" %>
@@ -19,13 +19,12 @@
 <div class="text-center col-md-12 smart-row">
   <table class="table table-striped table-hover ">
     <tbody>
-      <% @categories.each do |category| %>
-        <% unless category.new_record? %>
+      <% @sub_categories.each do |sub_category| %>
+        <% unless sub_category.new_record? %>
         <tr>
         
-          <td><%= category.name %></td>
-          <td><%= link_to 'Show', [current_user, category] %></td>
-          <td><%= link_to 'Destroy', [current_user, category], method: :delete , data: { confirm: 'Are you sure?' } %></td>
+          <td><%= sub_category.name %></td>
+          <td><%= link_to 'Destroy', [current_user, @category, sub_category], method: :delete , data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
       <% end %>
