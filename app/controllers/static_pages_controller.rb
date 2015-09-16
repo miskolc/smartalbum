@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if current_user
-      if current_user.images.size > 0
+      if current_user.images.count > 0
         redirect_to user_images_url(current_user)
       end  
     end
